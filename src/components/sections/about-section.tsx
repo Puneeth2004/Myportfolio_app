@@ -5,7 +5,7 @@ import { Progress } from '../ui/progress';
 
 function SkillBar({ name, level }: Skill) {
   return (
-    <div className="space-y-2">
+    <div className="space-y-1">
       <div className="flex justify-between">
         <p className="font-medium">{name}</p>
         <p className="text-sm text-muted-foreground">{level}%</p>
@@ -33,10 +33,12 @@ export function AboutSection() {
               <CardHeader>
                 <CardTitle className="font-headline text-2xl">My Skills</CardTitle>
               </CardHeader>
-              <CardContent className="space-y-6">
-                {skills.map((skill) => (
-                  <SkillBar key={skill.name} {...skill} />
-                ))}
+              <CardContent>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-4">
+                  {skills.map((skill) => (
+                    <SkillBar key={skill.name} {...skill} />
+                  ))}
+                </div>
               </CardContent>
             </Card>
           </div>
