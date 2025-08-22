@@ -2,8 +2,6 @@ import { AnimateOnScroll } from '../animate-on-scroll';
 import { Card, CardContent, CardHeader, CardTitle } from '../ui/card';
 import { personalData, skills, type Skill } from '@/data/content';
 import { Progress } from '../ui/progress';
-import { Button } from '../ui/button';
-import { Download } from 'lucide-react';
 
 function SkillBar({ name, level }: Skill) {
   return (
@@ -30,12 +28,6 @@ export function AboutSection() {
               <p className="text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
                 {personalData.bio}
               </p>
-              <Button asChild>
-                <a href={personalData.cvUrl} download>
-                  <Download className="mr-2 h-4 w-4" />
-                  Download CV
-                </a>
-              </Button>
             </div>
             <Card>
               <CardHeader>

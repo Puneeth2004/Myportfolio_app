@@ -2,7 +2,7 @@ import Image from 'next/image';
 import { Button } from '../ui/button';
 import { AnimateOnScroll } from '../animate-on-scroll';
 import { personalData } from '@/data/content';
-import { ArrowRight, FileText } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 
 export function HeroSection() {
   return (
@@ -24,12 +24,6 @@ export function HeroSection() {
                 <a href="#contact">
                   Contact Me
                   <ArrowRight className="ml-2 h-5 w-5" />
-                </a>
-              </Button>
-              <Button size="lg" variant="secondary" asChild>
-                <a href={personalData.cvUrl} download>
-                  <FileText className="mr-2 h-5 w-5" />
-                  My Resume
                 </a>
               </Button>
             </div>
