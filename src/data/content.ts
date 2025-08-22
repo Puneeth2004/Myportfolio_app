@@ -1,6 +1,6 @@
 export const personalData = {
-  name: "Alex Doe",
-  tagline: "I build things for the web.",
+  name: "Puneeth Kakimari",
+  tagline: "Final Year CSE Student.",
   bio: "A passionate Full Stack developer from New York, with a knack for creating elegant and efficient solutions. I love turning complex problems into simple, beautiful and intuitive designs. When I'm not coding, you can find me exploring the city or reading a good book.",
 };
 
@@ -10,12 +10,15 @@ export type Skill = {
 };
 
 export const skills: Skill[] = [
-  { name: "React / Next.js", level: 95 },
-  { name: "TypeScript", level: 90 },
-  { name: "Node.js", level: 85 },
-  { name: "Firebase", level: 80 },
-  { name: "Tailwind CSS", level: 95 },
-  { name: "UI/UX Design", level: 75 },
+  { name: "Java", level: 85 },
+  { name: "Python", level: 80 },
+  { name: "React", level: 75 },
+  { name: "Node.js", level: 70 },,
+  { name: "SQL & MongoDB", level: 65 },
+  { name: "HTML & CSS", level: 75 },
+  { name: "JavaScript", level: 60 },
+  { name: "Machine Learning (AI/ML)", level: 65 },
+  { name: "Data Structures & Algorithms", level: 85 }
 ];
 
 export type Project = {
