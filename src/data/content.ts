@@ -2,7 +2,6 @@ export const personalData = {
   name: "Alex Doe",
   tagline: "I build things for the web.",
   bio: "A passionate Full Stack developer from New York, with a knack for creating elegant and efficient solutions. I love turning complex problems into simple, beautiful and intuitive designs. When I'm not coding, you can find me exploring the city or reading a good book.",
-  cvUrl: "/alex-doe-cv.pdf"
 };
 
 export type Skill = {
@@ -63,7 +62,6 @@ export type Experience = {
   company: string;
   period: string;
   description: string;
-  type: "work" | "education";
 };
 
 export const experiences: Experience[] = [
@@ -72,20 +70,27 @@ export const experiences: Experience[] = [
     company: "Tech Solutions Inc.",
     period: "2020 - Present",
     description: "Leading development of client-facing web applications using modern technologies. Mentoring junior developers and improving code quality.",
-    type: "work",
   },
   {
     role: "Full Stack Developer",
     company: "Web Innovators",
     period: "2018 - 2020",
     description: "Developed and maintained web applications for various clients, focusing on performance and user experience.",
-    type: "work",
   },
-  {
-    role: "Bachelor of Science in Computer Science",
-    company: "University of Technology",
+];
+
+export type Education = {
+  degree: string;
+  institution: string;
+  period: string;
+  description: string;
+};
+
+export const education: Education[] = [
+    {
+    degree: "Bachelor of Science in Computer Science",
+    institution: "University of Technology",
     period: "2014 - 2018",
     description: "Graduated with honors. Focused on software engineering, algorithms, and web development. Active member of the coding club.",
-    type: "education",
   },
 ];
