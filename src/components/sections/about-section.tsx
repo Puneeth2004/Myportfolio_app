@@ -19,7 +19,7 @@ export function AboutSection() {
   return (
     <section id="about" className="w-full py-12 md:py-24 lg:py-32 bg-muted/40">
       <div className="container mx-auto px-4 md:px-6">
-        <AnimateOnScroll>
+        <AnimateOnScroll animationClass="animate-fade-in">
           <div className="grid gap-10 lg:grid-cols-2">
             <div className="space-y-4">
               <h2 className="font-headline text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">
