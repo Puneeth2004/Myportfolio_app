@@ -6,8 +6,15 @@ import { Button } from '../ui/button';
 import { AnimateOnScroll } from '../animate-on-scroll';
 import { personalData } from '@/data/content';
 import { ArrowRight } from 'lucide-react';
+import { useState, useEffect } from 'react';
 
 export function HeroSection() {
+  const [imageSrc, setImageSrc] = useState("/assets/profile-picture.png");
+
+  useEffect(() => {
+    setImageSrc(`/assets/profile-picture.png?${new Date().getTime()}`);
+  }, []);
+
   return (
     <section id="home" className="w-full py-20 md:py-32 lg:py-40">
       <div className="container mx-auto px-4 md:px-6">
@@ -40,8 +47,8 @@ export function HeroSection() {
             className="flex justify-center"
           >
             <Image
-              src="/assets/profile-picture.png"
-              key={Date.now()}
+              src={imageSrc}
+              key={imageSrc}
               data-ai-hint="profile picture"
               alt="Alex Doe's Profile Picture"
               width={400}

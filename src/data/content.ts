@@ -38,8 +38,8 @@ export const projects: Project[] = [
     stack: [ "C#", "AR Foundation", "Vuforia", "Unity"],
     github: "https://github.com",
     demo: "https://example.com",
-    image: "/assets/project-1.png",
-    image_alt: "AR applicaion",
+    image: "https://placehold.co/600x400.png",
+    image_alt: "AR application",
   },
   {
     title: "Real Time Yoga Assistant",
@@ -47,7 +47,7 @@ export const projects: Project[] = [
     stack: ["Html", "Css", "Fast API", "Python","Media pipe", "Firebase"],
     github: "https://github.com",
     demo: "https://example.com",
-    image: "/assets/project-2.png",
+    image: "https://placehold.co/600x400.png",
     image_alt: "Real Time Yoga Assistant",
   },
   {
@@ -55,7 +55,7 @@ export const projects: Project[] = [
     description: "My personal portfolio website (the one you're looking at now!) built with Next.js and styled with Tailwind CSS.",
     stack: ["Next.js", "TypeScript", "Tailwind CSS"],
     github: "https://github.com",
-    image: "/assets/project-3.png",
+    image: "https://placehold.co/600x400.png",
     image_alt: "portfolio website",
   },
   {
@@ -63,8 +63,8 @@ export const projects: Project[] = [
     description: "Developed a video translation system using Python, Streamlit, and the OpenAI Whisper model to transcribe English audio from videos with timestamps.",
     stack: ["Python", "Streamlit", "OpenAI", "Whisper", "FFMPEG", "gTTs"],
     github: "https://github.com/Puneeth2004/Videotranslator.git",
-    image: "/assets/project-4.png",
-    image_alt: " Multilingual Video Translation System",
+    image: "https://placehold.co/600x400.png",
+    image_alt: "Multilingual Video Translation System",
   },
 ];
 
