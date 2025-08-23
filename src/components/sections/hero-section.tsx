@@ -17,7 +17,10 @@ export function HeroSection() {
 
   return (
     <section id="home" className="relative w-full overflow-hidden py-20 md:py-32 lg:py-40">
-      <div className="absolute inset-0 -z-10 bg-gradient-to-tr from-background via-muted/50 to-background"></div>
+      <div className="absolute inset-0 -z-10">
+        <div className="absolute inset-0 bg-background" />
+        <div className="absolute inset-0 -left-1/2 -top-1/2 h-[200%] w-[200%] -rotate-[25deg] bg-gradient-to-tr from-muted/50 via-background to-muted/50" />
+      </div>
       <div className="container mx-auto px-4 md:px-6">
         <div className="grid gap-6 lg:grid-cols-2 lg:gap-12 xl:gap-16">
           <AnimateOnScroll
@@ -55,11 +58,9 @@ export function HeroSection() {
                 alt="Alex Doe's Profile Picture"
                 width={400}
                 height={400}
-                className="h-64 w-64 rounded-full object-cover shadow-2xl lg:h-96 lg:w-96"
+                className="h-64 w-64 rounded-full object-cover shadow-2xl lg:h-96 lg:w-96 ring-4 ring-background"
                 priority
               />
-              <div className="absolute -bottom-4 -right-4 h-24 w-24 rounded-full bg-primary/20 -z-10 animate-pulse"></div>
-              <div className="absolute -top-4 -left-4 h-24 w-24 rounded-full bg-accent/20 -z-10 animate-pulse delay-75"></div>
             </div>
           </AnimateOnScroll>
         </div>
