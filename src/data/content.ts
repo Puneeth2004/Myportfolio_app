@@ -1,7 +1,7 @@
 export const personalData = {
   name: "Puneeth Kakimari",
   tagline: "Final Year CSE Student.",
-  bio: "A passionate Full Stack developer from New York, with a knack for creating elegant and efficient solutions. I love turning complex problems into simple, beautiful and intuitive designs. When I'm not coding, you can find me exploring the city or reading a good book.",
+  bio: "I am a final-year Computer Science and Engineering student studying at Vellore Institute of Technology, with a strong passion for building impactful software solutions. Over the past few years, I have gained hands-on experience in Java, Python, Web Development, and Firebase, while also exploring areas like AI, Machine Learning, and Data Structures & Algorithms. Currently, I am looking for opportunities to apply my skills in software development, AI/ML, or full-stack development, where I can contribute, learn, and grow as a professional.",
 };
 
 export type Skill = {
@@ -13,7 +13,7 @@ export const skills: Skill[] = [
   { name: "Java", level: 85 },
   { name: "Python", level: 80 },
   { name: "React", level: 75 },
-  { name: "Node.js", level: 70 },,
+  { name: "Node.js", level: 70 },
   { name: "SQL & MongoDB", level: 65 },
   { name: "HTML & CSS", level: 75 },
   { name: "JavaScript", level: 60 },
@@ -38,7 +38,7 @@ export const projects: Project[] = [
     stack: ["Next.js", "TypeScript", "Tailwind CSS", "Stripe", "Firebase"],
     github: "https://github.com",
     demo: "https://example.com",
-    image: "https://placehold.co/600x400.png",
+    image: "/assets/project-1.png",
     image_alt: "e-commerce website",
   },
   {
@@ -47,7 +47,7 @@ export const projects: Project[] = [
     stack: ["React", "Node.js", "Express", "MongoDB", "Socket.IO"],
     github: "https://github.com",
     demo: "https://example.com",
-    image: "https://placehold.co/600x400.png",
+    image: "/assets/project-2.png",
     image_alt: "task manager",
   },
   {
@@ -55,7 +55,7 @@ export const projects: Project[] = [
     description: "My personal portfolio website (the one you're looking at now!) built with Next.js and styled with Tailwind CSS.",
     stack: ["Next.js", "TypeScript", "Tailwind CSS"],
     github: "https://github.com",
-    image: "https://placehold.co/600x400.png",
+    image: "/assets/project-3.png",
     image_alt: "portfolio website",
   },
 ];
@@ -69,16 +69,16 @@ export type Experience = {
 
 export const experiences: Experience[] = [
   {
-    role: "Senior Software Engineer",
-    company: "Tech Solutions Inc.",
-    period: "2020 - Present",
-    description: "Leading development of client-facing web applications using modern technologies. Mentoring junior developers and improving code quality.",
+    role: "Intern",
+    company: "Virtusa.",
+    period: "2025 - Present",
+    description: "Intern.",
   },
   {
-    role: "Full Stack Developer",
-    company: "Web Innovators",
-    period: "2018 - 2020",
-    description: "Developed and maintained web applications for various clients, focusing on performance and user experience.",
+    role: "Intern",
+    company: "Tech Sakhshyam - a Colloborative with Microsoft",
+    period: "2024 December - 2025 January",
+    description: "Developed a human pose detection project using media pipe and Open CV. Learnt development and deployoning the web pages using python as backend.",
   },
 ];
 
@@ -91,9 +91,21 @@ export type Education = {
 
 export const education: Education[] = [
     {
-    degree: "Bachelor of Science in Computer Science",
-    institution: "University of Technology",
-    period: "2014 - 2018",
-    description: "Graduated with honors. Focused on software engineering, algorithms, and web development. Active member of the coding club.",
+    degree: "Integrated M.Tech Computer Science",
+    institution: "Vellore Institue of Technology",
+    period: "2021 - till now",
+    description: "Studying M.Tech Integrated with cgpa of 8.41 out of ten.",
+  },
+  {
+    degree: "Intermediate",
+    institution: "Narayana Junior Collge",
+    period: "2019 - 2021",
+    description: "Completed Intermediate by scoring 954 out of thousand.",
+  },
+  {
+    degree: "Secondory School Eduaction",
+    institution: "LRG Vidyalayam",
+    period: "2014 - 2019",
+    description: "Completed Secondory School Certificate with the CGPA of 9.7 out of ten.",
   },
 ];

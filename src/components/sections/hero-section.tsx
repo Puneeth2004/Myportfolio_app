@@ -37,7 +37,7 @@ export function HeroSection() {
             className="flex justify-center"
           >
             <Image
-              src="https://placehold.co/400x400.png"
+              src="/assets/profile-picture.png"
               data-ai-hint="profile picture"
               alt="Alex Doe's Profile Picture"
               width={400}
