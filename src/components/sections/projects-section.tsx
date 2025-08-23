@@ -8,7 +8,7 @@ import { Github, ExternalLink } from 'lucide-react';
 
 function ProjectCard({ project }: { project: Project }) {
   return (
-    <Card className="flex h-full flex-col overflow-hidden transition-all hover:shadow-lg">
+    <Card className="flex h-full flex-col overflow-hidden transition-all duration-300 hover:shadow-2xl hover:-translate-y-1">
       <CardHeader className="p-0">
         <Image
           src={project.image}
@@ -67,7 +67,7 @@ export function ProjectsSection() {
               Here are some of the projects I've worked on.
             </p>
           </div>
-          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
             {projects.map((project, index) => (
               <AnimateOnScroll key={project.title} delay={`${index * 100}ms`} className="h-full">
                 <ProjectCard project={project} />

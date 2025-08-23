@@ -67,6 +67,15 @@ export const projects: Project[] = [
     image: "/assets/project-4.png",
     image_alt: "Multilingual Video Translation System",
   },
+  {
+    title: "Supermarket management system",
+    description: "Developed a website for supermarket management using React, Node.js, and MongoDB in the part of Virtusa Hackathon.",
+    stack: ["Raect", "MongoDB","Node.js", "Java", "Springboot"],
+    github: "https://github.com",
+    demo: "https://example.com",
+    image: "/assets/project-4.png",
+    image_alt: "Supermarket management sysytem",
+  },
 ];
 
 export type Experience = {
@@ -87,7 +96,7 @@ export const experiences: Experience[] = [
     role: "Intern",
     company: "Tech Sakhshyam - a Colloborative with Microsoft",
     period: "2024 December - 2025 January",
-    description: "Developed a human pose detection project using media pipe and Open CV. Learnt development and deployoning the web pages using python as backend.",
+    description: "Developed a human pose detection project using media pipe and Open CV.  Learnt development and deployoning the web pages using python as backend.",
   },
 ];
 
