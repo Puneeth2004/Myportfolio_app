@@ -63,8 +63,8 @@ export const projects: Project[] = [
     description: "Developed a video translation system using Python, Streamlit, and the OpenAI Whisper model to transcribe English audio from videos with timestamps.",
     stack: ["Python", "Streamlit", "OpenAI", "Whisper", "FFMPEG", "gTTs"],
     github: "https://github.com/Puneeth2004/Videotranslator.git",
-    image: "/assets/project-3.png",
-    image_alt: "portfolio website",
+    image: "/assets/project-4.png",
+    image_alt: " Multilingual Video Translation System",
   },
 ];
 

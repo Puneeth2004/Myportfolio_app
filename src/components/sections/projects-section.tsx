@@ -8,7 +8,7 @@ import { Github, ExternalLink } from 'lucide-react';
 
 function ProjectCard({ project }: { project: Project }) {
   return (
-    <Card className="overflow-hidden transition-all hover:shadow-lg">
+    <Card className="flex h-full flex-col overflow-hidden transition-all hover:shadow-lg">
       <CardHeader className="p-0">
         <Image
           src={project.image}
@@ -19,13 +19,13 @@ function ProjectCard({ project }: { project: Project }) {
           className="aspect-video w-full object-cover"
         />
       </CardHeader>
-      <div className="p-6">
+      <div className="flex flex-1 flex-col p-6">
         <CardTitle className="font-headline mb-2 text-xl">{project.title}</CardTitle>
-        <CardContent className="p-0 text-muted-foreground">
+        <CardContent className="flex-1 p-0 text-muted-foreground">
           <p>{project.description}</p>
         </CardContent>
       </div>
-      <CardFooter className="flex-col items-start gap-4">
+      <CardFooter className="flex-col items-start gap-4 p-6 pt-0">
         <div className="flex flex-wrap gap-2">
           {project.stack.map((tech) => (
             <Badge key={tech} variant="secondary">
@@ -56,7 +56,7 @@ function ProjectCard({ project }: { project: Project }) {
 
 export function ProjectsSection() {
   return (
-    <section id="projects" className="w-full py-12 md:py-24 lg:py-32 bg-muted/40">
+    <section id="projects" className="w-full bg-muted/40 py-12 md:py-24 lg:py-32">
       <div className="container mx-auto px-4 md:px-6">
         <AnimateOnScroll className="space-y-8">
           <div className="text-center">
@@ -69,7 +69,7 @@ export function ProjectsSection() {
           </div>
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {projects.map((project, index) => (
-              <AnimateOnScroll key={project.title} delay={`${index * 100}ms`}>
+              <AnimateOnScroll key={project.title} delay={`${index * 100}ms`} className="h-full">
                 <ProjectCard project={project} />
               </AnimateOnScroll>
             ))}
