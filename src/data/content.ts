@@ -68,7 +68,7 @@ export const projects: Project[] = [
     title: "Supermarket management system",
     description: "Developed a website for supermarket management using React, Node.js, and MongoDB as a part of Virtusa Hackathon.",
     stack: ["Raect", "MongoDB","Node.js", "Java", "Springboot"],
-    image: "/assets/project-4.png",
+    image: "/assets/project-5.png",
     image_alt: "Supermarket management sysytem",
   },
 ];
