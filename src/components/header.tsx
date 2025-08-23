@@ -37,7 +37,7 @@ export function Header() {
     >
       <div className="container mx-auto flex h-16 items-center justify-between px-4 md:px-6">
         <Link href="/" className="text-2xl font-bold font-headline text-primary">
-          Persona
+          Portfolio
         </Link>
         <nav className="hidden items-center gap-6 md:flex">
           {navLinks.map((link) => (
@@ -63,7 +63,7 @@ export function Header() {
               <div className="flex h-full flex-col p-6">
                 <div className="mb-8 flex items-center justify-between">
                   <Link href="/" className="text-2xl font-bold font-headline text-primary">
-                    Persona
+                    Portfolio
                   </Link>
                   <Button variant="ghost" size="icon" onClick={() => setIsMobileMenuOpen(false)}>
                     <X className="h-6 w-6" />
