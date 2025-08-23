@@ -11,7 +11,8 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '../ui
 import { Input } from '../ui/input';
 import { Label } from '../ui/label';
 import { Textarea } from '../ui/textarea';
-import { Send } from 'lucide-react';
+import { Send, Github, Linkedin, Twitter } from 'lucide-react';
+import { Separator } from '../ui/separator';
 
 function SubmitButton() {
   const { pending } = useFormStatus();
@@ -68,6 +69,27 @@ export function ContactSection() {
                 </div>
                 <SubmitButton />
               </form>
+            </CardContent>
+            <Separator className="my-6" />
+            <CardContent className="text-center">
+              <h3 className="mb-4 text-lg font-medium">Social Links</h3>
+              <div className="flex items-center justify-center gap-2">
+                <Button variant="ghost" size="icon" asChild>
+                  <a href="https://github.com" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+                    <Github className="h-5 w-5" />
+                  </a>
+                </Button>
+                <Button variant="ghost" size="icon" asChild>
+                  <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+                    <Linkedin className="h-5 w-5" />
+                  </a>
+                </Button>
+                <Button variant="ghost" size="icon" asChild>
+                  <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" aria-label="Twitter">
+                    <Twitter className="h-5 w-5" />
+                  </a>
+                </Button>
+              </div>
             </CardContent>
           </Card>
         </AnimateOnScroll>
