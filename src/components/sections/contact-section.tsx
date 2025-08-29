@@ -1,6 +1,7 @@
 "use client";
 
-import { useState } from 'react';
+import { useEffect, useRef } from 'react';
+import { useFormState, useFormStatus } from 'react-dom';
 import { AnimateOnScroll } from '../animate-on-scroll';
 import { Button } from '../ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '../ui/card';
@@ -10,37 +11,48 @@ import { Textarea } from '../ui/textarea';
 import { Send, Github, Linkedin } from 'lucide-react';
 import { Separator } from '../ui/separator';
 import { useToast } from '@/hooks/use-toast';
-import { sendMessage } from '@/app/actions/sendMessage';
+import { sendMessage, type State } from '@/app/actions/sendMessage';
+
+function SubmitButton() {
+  const { pending } = useFormStatus();
+
+  return (
+    <Button type="submit" className="w-full" disabled={pending}>
+      {pending ? 'Sending...' : 'Send Message'}
+      <Send className="ml-2 h-4 w-4" />
+    </Button>
+  );
+}
 
 export function ContactSection() {
-  const [name, setName] = useState('');
-  const [email, setEmail] = useState('');
-  const [message, setMessage] = useState('');
-  const [isSubmitting, setIsSubmitting] = useState(false);
+  const initialState: State = { message: null, errors: {}, success: false };
+  const [state, dispatch] = useFormState(sendMessage, initialState);
+  const formRef = useRef<HTMLFormElement>(null);
   const { toast } = useToast();
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setIsSubmitting(true);
-    try {
-      await sendMessage({ name, email, message });
+  useEffect(() => {
+    if (state.success) {
       toast({
         title: "Message Sent!",
         description: "Thank you for reaching out. I'll get back to you soon.",
       });
-      setName('');
-      setEmail('');
-      setMessage('');
-    } catch (error) {
+      formRef.current?.reset();
+    } else if (state.message && state.errors) {
+       const errorMessages = Object.values(state.errors).flat().join(' ');
       toast({
         variant: "destructive",
         title: "Uh oh! Something went wrong.",
-        description: "There was a problem sending your message. Please try again.",
+        description: state.message + ' ' + errorMessages,
       });
-    } finally {
-      setIsSubmitting(false);
+    } else if (state.message) {
+       toast({
+        variant: "destructive",
+        title: "Uh oh! Something went wrong.",
+        description: state.message,
+      });
     }
-  };
+  }, [state, toast]);
+
 
   return (
     <section id="contact" className="w-full py-12 md:py-24 lg:py-32">
@@ -56,23 +68,23 @@ export function ContactSection() {
               </CardDescription>
             </CardHeader>
             <CardContent>
-              <form onSubmit={handleSubmit} className="space-y-4">
+              <form ref={formRef} action={dispatch} className="space-y-4">
                 <div className="space-y-2">
                   <Label htmlFor="name">Name</Label>
-                  <Input id="name" name="name" placeholder="Your Name" required value={name} onChange={(e) => setName(e.target.value)} disabled={isSubmitting} />
+                  <Input id="name" name="name" placeholder="Your Name" required />
+                   {state.errors?.name && <p className="text-sm font-medium text-destructive">{state.errors.name}</p>}
                 </div>
                 <div className="space-y-2">
                   <Label htmlFor="email">Email</Label>
-                  <Input id="email" name="email" type="email" placeholder="your@email.com" required value={email} onChange={(e) => setEmail(e.target.value)} disabled={isSubmitting} />
+                  <Input id="email" name="email" type="email" placeholder="your@email.com" required />
+                   {state.errors?.email && <p className="text-sm font-medium text-destructive">{state.errors.email}</p>}
                 </div>
                 <div className="space-y-2">
                   <Label htmlFor="message">Message</Label>
-                  <Textarea id="message" name="message" placeholder="Your message..." required value={message} onChange={(e) => setMessage(e.target.value)} disabled={isSubmitting} />
+                  <Textarea id="message" name="message" placeholder="Your message..." required />
+                  {state.errors?.message && <p className="text-sm font-medium text-destructive">{state.errors.message}</p>}
                 </div>
-                <Button type="submit" className="w-full" disabled={isSubmitting}>
-                  {isSubmitting ? 'Sending...' : 'Send Message'}
-                  <Send className="ml-2 h-4 w-4" />
-                </Button>
+                <SubmitButton />
               </form>
             </CardContent>
             <Separator className="my-6" />

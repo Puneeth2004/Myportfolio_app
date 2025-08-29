@@ -5,30 +5,48 @@ import { collection, addDoc, serverTimestamp } from 'firebase/firestore';
 import { z } from 'zod';
 
 const contactSchema = z.object({
-  name: z.string().min(2, { message: "Name must be at least 2 characters." }),
-  email: z.string().email({ message: "Invalid email address." }),
-  message: z.string().min(10, { message: "Message must be at least 10 characters." }),
+  name: z.string().min(2, { message: 'Name must be at least 2 characters.' }),
+  email: z.string().email({ message: 'Invalid email address.' }),
+  message: z.string().min(10, { message: 'Message must be at least 10 characters.' }),
 });
 
-export async function sendMessage(formData: { name: string; email: string; message: string }) {
-  const parsedData = contactSchema.safeParse(formData);
+export type State = {
+  errors?: {
+    name?: string[];
+    email?: string[];
+    message?: string[];
+  };
+  message?: string | null;
+  success?: boolean;
+};
 
-  if (!parsedData.success) {
-    // This will now throw a more descriptive error if validation fails.
-    throw new Error('Invalid form data.');
+export async function sendMessage(prevState: State, formData: FormData): Promise<State> {
+  const validatedFields = contactSchema.safeParse({
+    name: formData.get('name'),
+    email: formData.get('email'),
+    message: formData.get('message'),
+  });
+
+  if (!validatedFields.success) {
+    return {
+      errors: validatedFields.error.flatten().fieldErrors,
+      message: 'Invalid form data.',
+      success: false,
+    };
   }
+  
+  const { name, email, message } = validatedFields.data;
 
   try {
-    const { name, email, message } = parsedData.data;
     await addDoc(collection(db, 'messages'), {
       name,
       email,
       message,
       createdAt: serverTimestamp(),
     });
-    return { success: true };
+    return { success: true, message: "Message sent successfully!" };
   } catch (error) {
     console.error('Error saving message to Firestore:', error);
-    throw new Error('Could not save message.');
+    return { success: false, message: 'Could not save message.' };
   }
 }
