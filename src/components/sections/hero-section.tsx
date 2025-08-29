@@ -6,15 +6,8 @@ import { Button } from '../ui/button';
 import { AnimateOnScroll } from '../animate-on-scroll';
 import { personalData } from '@/data/content';
 import { ArrowRight } from 'lucide-react';
-import { useState, useEffect } from 'react';
 
 export function HeroSection() {
-  const [imageSrc, setImageSrc] = useState("/assets/profile-picture.png");
-
-  useEffect(() => {
-    setImageSrc(`/assets/profile-picture.png?${new Date().getTime()}`);
-  }, []);
-
   return (
     <section id="home" className="relative w-full overflow-hidden py-20 md:py-32 lg:py-40">
       <div className="absolute inset-0 -z-10">
@@ -45,14 +38,13 @@ export function HeroSection() {
               </Button>
             </div>
           </AnimateOnScroll>
-          <div
-            className="flex animate-fade-in justify-center"
-            style={{ animationDelay: '200ms' }}
-          >
-            <div className="relative">
-               <Image
-                src={imageSrc}
-                key={imageSrc}
+          <div className="relative flex justify-center">
+            <div
+              className="relative animate-fade-in"
+              style={{ animationDelay: '200ms' }}
+            >
+              <Image
+                src="/assets/profile-picture.png"
                 data-ai-hint="profile picture"
                 alt="Puneeth's Profile Picture"
                 width={400}
