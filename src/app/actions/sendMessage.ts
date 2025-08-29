@@ -14,6 +14,7 @@ export async function sendMessage(formData: { name: string; email: string; messa
   const parsedData = contactSchema.safeParse(formData);
 
   if (!parsedData.success) {
+    // This will now throw a more descriptive error if validation fails.
     throw new Error('Invalid form data.');
   }
 
