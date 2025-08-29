@@ -75,20 +75,16 @@ export function ContactSection() {
               <h3 className="mb-4 text-lg font-medium">Social Links</h3>
               <div className="flex items-center justify-center gap-2">
                 <Button variant="ghost" size="icon" asChild>
-                  <a href="https://github.com" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+                  <a href="https://github.com/Puneeth2004" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
                     <Github className="h-5 w-5" />
                   </a>
                 </Button>
                 <Button variant="ghost" size="icon" asChild>
-                  <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+                  <a href="http://www.linkedin.com/in/puneeth-k-05254824b" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
                     <Linkedin className="h-5 w-5" />
                   </a>
                 </Button>
-                <Button variant="ghost" size="icon" asChild>
-                  <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" aria-label="Twitter">
-                    <Twitter className="h-5 w-5" />
-                  </a>
-                </Button>
+
               </div>
             </CardContent>
           </Card>
