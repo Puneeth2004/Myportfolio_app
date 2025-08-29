@@ -45,7 +45,7 @@ export function ContactSection() {
         title: "Uh oh! Something went wrong.",
         description: state.message + ' ' + errorMessages,
       });
-    } else if (state.message) {
+    } else if (state.message && !state.success) {
        toast({
         variant: "destructive",
         title: "Uh oh! Something went wrong.",
