@@ -9,18 +9,37 @@ import { Label } from '../ui/label';
 import { Textarea } from '../ui/textarea';
 import { Send, Github, Linkedin } from 'lucide-react';
 import { Separator } from '../ui/separator';
+import { useToast } from '@/hooks/use-toast';
+import { sendMessage } from '@/app/actions/sendMessage';
 
 export function ContactSection() {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [message, setMessage] = useState('');
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const { toast } = useToast();
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    const subject = `Message from ${name} (${email})`;
-    const body = message;
-    const mailtoLink = `mailto:nanupuneeth2004@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-    window.location.href = mailtoLink;
+    setIsSubmitting(true);
+    try {
+      await sendMessage({ name, email, message });
+      toast({
+        title: "Message Sent!",
+        description: "Thank you for reaching out. I'll get back to you soon.",
+      });
+      setName('');
+      setEmail('');
+      setMessage('');
+    } catch (error) {
+      toast({
+        variant: "destructive",
+        title: "Uh oh! Something went wrong.",
+        description: "There was a problem sending your message. Please try again.",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -40,18 +59,19 @@ export function ContactSection() {
               <form onSubmit={handleSubmit} className="space-y-4">
                 <div className="space-y-2">
                   <Label htmlFor="name">Name</Label>
-                  <Input id="name" name="name" placeholder="Your Name" required value={name} onChange={(e) => setName(e.target.value)} />
+                  <Input id="name" name="name" placeholder="Your Name" required value={name} onChange={(e) => setName(e.target.value)} disabled={isSubmitting} />
                 </div>
                 <div className="space-y-2">
                   <Label htmlFor="email">Email</Label>
-                  <Input id="email" name="email" type="email" placeholder="your@email.com" required value={email} onChange={(e) => setEmail(e.target.value)} />
+                  <Input id="email" name="email" type="email" placeholder="your@email.com" required value={email} onChange={(e) => setEmail(e.target.value)} disabled={isSubmitting} />
                 </div>
                 <div className="space-y-2">
                   <Label htmlFor="message">Message</Label>
-                  <Textarea id="message" name="message" placeholder="Your message..." required value={message} onChange={(e) => setMessage(e.target.value)} />
+                  <Textarea id="message" name="message" placeholder="Your message..." required value={message} onChange={(e) => setMessage(e.target.value)} disabled={isSubmitting} />
                 </div>
-                <Button type="submit" className="w-full">
-                  Send Message <Send className="ml-2 h-4 w-4" />
+                <Button type="submit" className="w-full" disabled={isSubmitting}>
+                  {isSubmitting ? 'Sending...' : 'Send Message'}
+                  <Send className="ml-2 h-4 w-4" />
                 </Button>
               </form>
             </CardContent>
@@ -69,7 +89,6 @@ export function ContactSection() {
                     <Linkedin className="h-5 w-5" />
                   </a>
                 </Button>
-
               </div>
             </CardContent>
           </Card>
