@@ -45,10 +45,9 @@ export function HeroSection() {
               </Button>
             </div>
           </AnimateOnScroll>
-          <AnimateOnScroll
-            animationClass="animate-fade-in"
-            delay="200ms"
-            className="flex justify-center"
+          <div
+            className="flex animate-fade-in justify-center"
+            style={{ animationDelay: '200ms' }}
           >
             <div className="relative">
                <Image
@@ -62,7 +61,7 @@ export function HeroSection() {
                 priority
               />
             </div>
-          </AnimateOnScroll>
+          </div>
         </div>
       </div>
     </section>
