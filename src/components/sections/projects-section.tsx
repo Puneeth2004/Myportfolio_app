@@ -8,22 +8,13 @@ import { projects, type Project } from '@/data/content';
 import { Badge } from '../ui/badge';
 import { Button } from '../ui/button';
 import { Github, ExternalLink } from 'lucide-react';
-import { useState, useEffect } from 'react';
 
 function ProjectCard({ project }: { project: Project }) {
-  const [imageSrc, setImageSrc] = useState(project.image);
-
-  useEffect(() => {
-    // Cache-bust the image URL
-    setImageSrc(`${project.image}?${new Date().getTime()}`);
-  }, [project.image]);
-
   return (
     <Card className="flex h-full flex-col overflow-hidden transition-all duration-300 hover:shadow-2xl hover:-translate-y-1">
       <CardHeader className="p-0">
         <Image
-          src={imageSrc}
-          key={imageSrc} // Ensures React re-renders the Image component on src change
+          src={project.image}
           data-ai-hint={project.image_alt}
           alt={project.title}
           width={600}
