@@ -22,7 +22,7 @@ export function HeroSection() {
         <div className="absolute inset-0 -left-1/2 -top-1/2 h-[200%] w-[200%] -rotate-[25deg] bg-gradient-to-tr from-muted/50 via-background to-muted/50" />
       </div>
       <div className="container mx-auto px-4 md:px-6">
-        <div className="grid gap-6 lg:grid-cols-2 lg:gap-12 xl:gap-16">
+        <div className="grid gap-6 lg:grid-cols-2 lg:gap-8">
           <AnimateOnScroll
             animationClass="animate-fade-in-left"
             className="flex flex-col justify-center space-y-4 text-center lg:text-left"
@@ -55,7 +55,7 @@ export function HeroSection() {
                 src={imageSrc}
                 key={imageSrc}
                 data-ai-hint="profile picture"
-                alt="Alex Doe's Profile Picture"
+                alt="Puneeth's Profile Picture"
                 width={400}
                 height={400}
                 className="h-64 w-64 rounded-full object-cover shadow-2xl lg:h-96 lg:w-96 ring-4 ring-background"
