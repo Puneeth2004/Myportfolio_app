@@ -1,20 +1,13 @@
 
-"use client";
-
 import Image from 'next/image';
 import { Button } from '../ui/button';
 import { personalData } from '@/data/content';
 import { ArrowRight } from 'lucide-react';
 import { AnimateOnScroll } from '../animate-on-scroll';
-import { useState, useEffect } from 'react';
+
+const PROFILE_PICTURE_PATH = `/assets/profile-picture.png?v=1`;
 
 export function HeroSection() {
-  const [imageSrc, setImageSrc] = useState('/assets/profile-picture.png');
-
-  useEffect(() => {
-    setImageSrc(`/assets/profile-picture.png?t=${new Date().getTime()}`);
-  }, []);
-
   return (
     <section id="home" className="relative w-full overflow-hidden py-20 md:py-32 lg:py-40">
       <div className="absolute inset-0 -z-10">
@@ -47,14 +40,13 @@ export function HeroSection() {
           </AnimateOnScroll>
           <div className="relative flex justify-center">
             <Image
-              src={imageSrc}
+              src={PROFILE_PICTURE_PATH}
               data-ai-hint="profile picture"
               alt="Puneeth's Profile Picture"
               width={400}
               height={400}
               className="h-64 w-64 rounded-full object-cover shadow-2xl lg:h-96 lg:w-96 ring-4 ring-background animate-fade-in"
               priority
-              key={imageSrc}
             />
           </div>
         </div>

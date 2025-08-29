@@ -1,4 +1,6 @@
 
+const ASSET_VERSION = 1;
+
 export const personalData = {
   name: "Puneeth Kakimari",
   tagline: "Final Year CSE Student.",
@@ -26,7 +28,7 @@ export type Project = {
   title: string;
   description: string;
   stack: string[];
-  github: string;
+  github?: string;
   demo?: string;
   image: string;
   image_alt: string;
@@ -38,7 +40,7 @@ export const projects: Project[] = [
     description: "Developed an Augmented Reality Application to teach daily living skills for adults with intellectual disabilities.",
     stack: [ "C#", "AR Foundation", "Vuforia", "Unity"],
     demo: "https://drive.google.com/file/d/1OKo62f87hPee1w-d4X-4QaIgDNzFE86k/view?usp=sharing",
-    image: "/assets/project-1.png",
+    image: `/assets/project-1.png?v=${ASSET_VERSION}`,
     image_alt: "AR application",
   },
   {
@@ -46,14 +48,14 @@ export const projects: Project[] = [
     description: "A collaborative task management application with boards, lists, and cards, inspired by Trello. Real-time updates with websockets.",
     stack: ["Html", "Css", "Fast API", "Python","Media pipe", "Firebase"],
     github: "https://github.com",
-    image: "/assets/project-2.png",
+    image: `/assets/project-2.png?v=${ASSET_VERSION}`,
     image_alt: "Real Time Yoga Assistant",
   },
   {
     title: "Portfolio Website",
     description: "My personal portfolio website (the one you're looking at now!) built with Next.js and styled with Tailwind CSS.",
     stack: ["Next.js", "TypeScript", "Tailwind CSS"],
-    image: "/assets/project-3.png",
+    image: `/assets/project-3.png?v=${ASSET_VERSION}`,
     image_alt: "portfolio website",
   },
   {
@@ -61,21 +63,21 @@ export const projects: Project[] = [
     description: "Developed a video translation system using Python, Streamlit, and the OpenAI Whisper model to transcribe English audio from videos with timestamps.",
     stack: ["Python", "Streamlit", "OpenAI", "Whisper", "FFMPEG", "gTTs"],
     github: "https://github.com/Puneeth2004/Videotranslator.git",
-    image: "/assets/project-4.png",
+    image: `/assets/project-4.png?v=${ASSET_VERSION}`,
     image_alt: "Multilingual Video Translation System",
   },
   {
     title: "Supermarket management system",
     description: "Developed a website for supermarket management using React, Node.js, and MongoDB as a part of Virtusa Hackathon.",
     stack: ["React", "MongoDB","Node.js", "Java", "Springboot"],
-    image: "/assets/project-5.png",
+    image: `/assets/project-5.png?v=${ASSET_VERSION}`,
     image_alt: "Supermarket management sysytem",
   },
   {
     title: "AI powered Placement Assistant",
     description: "Developed a Website that helps freshers by taking mock interviews and to give career guidelines.",
     stack: ["React", "MongoDB","Typescript", "CSS", "Genkit", "Firebase"],
-    image: "/assets/project-6.png",
+    image: `/assets/project-6.png?v=${ASSET_VERSION}`,
     image_alt: "AI powered Placement Assistant",
   },
 ];
