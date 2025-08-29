@@ -1,41 +1,27 @@
 "use client";
 
-import { useEffect, useActionState } from 'react';
-import { useFormStatus } from 'react-dom';
-import { submitContactForm } from '@/lib/actions';
-import { useToast } from '@/hooks/use-toast';
-
+import { useState } from 'react';
 import { AnimateOnScroll } from '../animate-on-scroll';
 import { Button } from '../ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '../ui/card';
 import { Input } from '../ui/input';
 import { Label } from '../ui/label';
 import { Textarea } from '../ui/textarea';
-import { Send, Github, Linkedin, Twitter } from 'lucide-react';
+import { Send, Github, Linkedin } from 'lucide-react';
 import { Separator } from '../ui/separator';
 
-function SubmitButton() {
-  const { pending } = useFormStatus();
-  return (
-    <Button type="submit" disabled={pending} className="w-full">
-      {pending ? 'Sending...' : <>Send Message <Send className="ml-2 h-4 w-4" /></>}
-    </Button>
-  );
-}
-
 export function ContactSection() {
-  const { toast } = useToast();
-  const [state, formAction] = useActionState(submitContactForm, null);
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [message, setMessage] = useState('');
 
-  useEffect(() => {
-    if (state?.message) {
-      toast({
-        title: state.success ? "Success!" : "Error",
-        description: state.message,
-        variant: state.success ? "default" : "destructive",
-      });
-    }
-  }, [state, toast]);
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    const subject = `Message from ${name} (${email})`;
+    const body = message;
+    const mailtoLink = `mailto:puneethkakimari@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    window.location.href = mailtoLink;
+  };
 
   return (
     <section id="contact" className="w-full py-12 md:py-24 lg:py-32">
@@ -51,23 +37,22 @@ export function ContactSection() {
               </CardDescription>
             </CardHeader>
             <CardContent>
-              <form action={formAction} className="space-y-4">
+              <form onSubmit={handleSubmit} className="space-y-4">
                 <div className="space-y-2">
                   <Label htmlFor="name">Name</Label>
-                  <Input id="name" name="name" placeholder="Your Name" required />
-                  {state?.errors?.name && <p className="text-sm font-medium text-destructive">{state.errors.name[0]}</p>}
+                  <Input id="name" name="name" placeholder="Your Name" required value={name} onChange={(e) => setName(e.target.value)} />
                 </div>
                 <div className="space-y-2">
                   <Label htmlFor="email">Email</Label>
-                  <Input id="email" name="email" type="email" placeholder="your@email.com" required />
-                  {state?.errors?.email && <p className="text-sm font-medium text-destructive">{state.errors.email[0]}</p>}
+                  <Input id="email" name="email" type="email" placeholder="your@email.com" required value={email} onChange={(e) => setEmail(e.target.value)} />
                 </div>
                 <div className="space-y-2">
                   <Label htmlFor="message">Message</Label>
-                  <Textarea id="message" name="message" placeholder="Your message..." required />
-                  {state?.errors?.message && <p className="text-sm font-medium text-destructive">{state.errors.message[0]}</p>}
+                  <Textarea id="message" name="message" placeholder="Your message..." required value={message} onChange={(e) => setMessage(e.target.value)} />
                 </div>
-                <SubmitButton />
+                <Button type="submit" className="w-full">
+                  Send Message <Send className="ml-2 h-4 w-4" />
+                </Button>
               </form>
             </CardContent>
             <Separator className="my-6" />
