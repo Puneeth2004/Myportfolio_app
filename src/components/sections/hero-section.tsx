@@ -46,7 +46,7 @@ export function HeroSection() {
             </div>
           </AnimateOnScroll>
           <AnimateOnScroll
-            animationClass="animate-fade-in-right"
+            animationClass="animate-fade-in"
             delay="200ms"
             className="flex justify-center"
           >
