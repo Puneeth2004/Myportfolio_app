@@ -19,7 +19,7 @@ export function ContactSection() {
     e.preventDefault();
     const subject = `Message from ${name} (${email})`;
     const body = message;
-    const mailtoLink = `mailto:puneethkakimari@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    const mailtoLink = `mailto:nanupuneeth2004@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
     window.location.href = mailtoLink;
   };
 
