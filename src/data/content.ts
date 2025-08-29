@@ -67,9 +67,16 @@ export const projects: Project[] = [
   {
     title: "Supermarket management system",
     description: "Developed a website for supermarket management using React, Node.js, and MongoDB as a part of Virtusa Hackathon.",
-    stack: ["Raect", "MongoDB","Node.js", "Java", "Springboot"],
+    stack: ["React", "MongoDB","Node.js", "Java", "Springboot"],
     image: "/assets/project-5.png",
     image_alt: "Supermarket management sysytem",
+  },
+  {
+    title: "AI powered Placement Assistant",
+    description: "Developed a Website that helps freshers by taking mock interviews and to give career guidelines.",
+    stack: ["React", "MongoDB","Typescript", "CSS", "Genkit", "Firebase"],
+    image: "/assets/project-6.png",
+    image_alt: "AI powered Placement Assistant",
   },
 ];
 

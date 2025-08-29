@@ -1,3 +1,6 @@
+
+"use client";
+
 import Image from 'next/image';
 import { AnimateOnScroll } from '../animate-on-scroll';
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '../ui/card';
@@ -5,13 +8,21 @@ import { projects, type Project } from '@/data/content';
 import { Badge } from '../ui/badge';
 import { Button } from '../ui/button';
 import { Github, ExternalLink } from 'lucide-react';
+import { useState, useEffect } from 'react';
 
 function ProjectCard({ project }: { project: Project }) {
+  const [imageSrc, setImageSrc] = useState(project.image);
+
+  useEffect(() => {
+    setImageSrc(`${project.image}?${new Date().getTime()}`);
+  }, [project.image]);
+
   return (
     <Card className="flex h-full flex-col overflow-hidden transition-all duration-300 hover:shadow-2xl hover:-translate-y-1">
       <CardHeader className="p-0">
         <Image
-          src={project.image}
+          src={imageSrc}
+          key={imageSrc}
           data-ai-hint={project.image_alt}
           alt={project.title}
           width={600}
