@@ -14,6 +14,7 @@ function ProjectCard({ project }: { project: Project }) {
   const [imageSrc, setImageSrc] = useState(project.image);
 
   useEffect(() => {
+    // Cache-bust the image URL
     setImageSrc(`${project.image}?${new Date().getTime()}`);
   }, [project.image]);
 
@@ -22,7 +23,7 @@ function ProjectCard({ project }: { project: Project }) {
       <CardHeader className="p-0">
         <Image
           src={imageSrc}
-          key={imageSrc}
+          key={imageSrc} // Ensures React re-renders the Image component on src change
           data-ai-hint={project.image_alt}
           alt={project.title}
           width={600}

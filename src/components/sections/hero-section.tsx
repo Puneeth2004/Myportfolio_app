@@ -1,13 +1,21 @@
 
 "use client";
 
+import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import { Button } from '../ui/button';
-import { AnimateOnScroll } from '../animate-on-scroll';
 import { personalData } from '@/data/content';
 import { ArrowRight } from 'lucide-react';
+import { AnimateOnScroll } from '../animate-on-scroll';
 
 export function HeroSection() {
+  const [imageSrc, setImageSrc] = useState('/assets/profile-picture.png');
+
+  useEffect(() => {
+    // Cache-bust the image URL
+    setImageSrc(`/assets/profile-picture.png?${new Date().getTime()}`);
+  }, []);
+
   return (
     <section id="home" className="relative w-full overflow-hidden py-20 md:py-32 lg:py-40">
       <div className="absolute inset-0 -z-10">
@@ -39,20 +47,16 @@ export function HeroSection() {
             </div>
           </AnimateOnScroll>
           <div className="relative flex justify-center">
-            <div
-              className="relative animate-fade-in"
-              style={{ animationDelay: '200ms' }}
-            >
-              <Image
-                src="/assets/profile-picture.png"
-                data-ai-hint="profile picture"
-                alt="Puneeth's Profile Picture"
-                width={400}
-                height={400}
-                className="h-64 w-64 rounded-full object-cover shadow-2xl lg:h-96 lg:w-96 ring-4 ring-background"
-                priority
-              />
-            </div>
+            <Image
+              src={imageSrc}
+              key={imageSrc} // Ensures React re-renders the Image component on src change
+              data-ai-hint="profile picture"
+              alt="Puneeth's Profile Picture"
+              width={400}
+              height={400}
+              className="h-64 w-64 rounded-full object-cover shadow-2xl lg:h-96 lg:w-96 ring-4 ring-background animate-fade-in"
+              priority
+            />
           </div>
         </div>
       </div>
