@@ -1,7 +1,7 @@
 "use client";
 
-import { useEffect, useRef } from 'react';
-import { useFormState, useFormStatus } from 'react-dom';
+import { useEffect, useRef, useActionState } from 'react';
+import { useFormStatus } from 'react-dom';
 import { AnimateOnScroll } from '../animate-on-scroll';
 import { Button } from '../ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '../ui/card';
@@ -26,7 +26,7 @@ function SubmitButton() {
 
 export function ContactSection() {
   const initialState: State = { message: null, errors: {}, success: false };
-  const [state, dispatch] = useFormState(sendMessage, initialState);
+  const [state, dispatch] = useActionState(sendMessage, initialState);
   const formRef = useRef<HTMLFormElement>(null);
   const { toast } = useToast();
 
